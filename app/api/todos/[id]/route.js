@@ -1,5 +1,5 @@
-import dbConnect from '../../../../../lib/db';
-import Todo from '../../../../../models/Todo';
+import dbConnect from '@/lib/db';
+import Todo from '@/models/Todo';
 import { NextResponse } from 'next/server';
 
 export async function GET(request, { params }) {
