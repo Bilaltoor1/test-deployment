@@ -1,0 +1,25 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to WSL
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.WSL_HOST }}
+        username: ${{ secrets.WSL_USERNAME }}
+        key: ${{ secrets.WSL_SSH_KEY }}
+        script: |
+          cd ${{ secrets.PROJECT_PATH }}
+          git pull origin main
+          npm install
+          # Add any other commands needed to restart your application, e.g., pm2 restart app

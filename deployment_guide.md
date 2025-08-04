@@ -78,6 +78,18 @@ pm2 start npm --name "next-app" -- start
 
 You can check the status of your application with `pm2 list`.
 
+To ensure your application restarts automatically after a reboot, run the following commands:
+
+```bash
+pm2 startup
+```
+
+This will generate a command that you need to copy and paste into your terminal. After running the generated command, save the current process list:
+
+```bash
+pm2 save
+```
+
 ## 6. Configure Nginx
 
 Now, configure Nginx to act as a reverse proxy, forwarding requests to your Next.js application running on port 3000.
