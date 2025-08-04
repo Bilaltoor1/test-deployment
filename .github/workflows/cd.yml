@@ -20,6 +20,7 @@ jobs:
         key: ${{ secrets.WSL_SSH_KEY }}
         script: |
           cd ${{ secrets.PROJECT_PATH }}
-          git pull origin main
+          git fetch --all
+          git reset --hard origin/main
           npm install
           # Add any other commands needed to restart your application, e.g., pm2 restart app
