@@ -2,7 +2,7 @@ name: CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]  # Change 'main' to 'master'
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Pull latest code
-      run: git pull origin main
+      run: git pull origin master  # Ensure the branch name matches here too
 
     - name: Install dependencies
       run: npm ci
