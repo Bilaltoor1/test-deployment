@@ -2,24 +2,25 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]  # Changed from main to master
   pull_request:
-    branches: [ main ]
+    branches: [ master ]  # Changed from main to master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # Updated to v4
 
     - name: Use Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4  # Updated to v4
       with:
         node-version: '20.x'
+        cache: 'npm'  # Added npm caching
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci  # Changed from npm install to npm ci
 
     - name: Build
       run: npm run build
